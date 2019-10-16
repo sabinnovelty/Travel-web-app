@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  color: #314252;
+  cursor: default;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-print-color-adjust: exact;
+  font-family: 'Open Sans', 'sans-serif';
+}
+
+.hidden {
+  display: none;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+input {
+  overflow: visible;
+  outline: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.react-datepicker__input-container,
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+/* this is just for demo */
+.profileDropDown>div:nth-of-type(2) { position: absolute; right: 5px; }
+
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.react-datepicker-popper {
+  z-index: 100;
+}
+.react-datepicker__month-read-view--down-arrow {
+  border-width: 5px;
+  top:6px;
+}
+
+.react-datepicker__year-read-view--down-arrow {
+  border-width: 5px;
+  top: 5px;
+}
+
+.slick-slider {
+  left: 0;
+}
