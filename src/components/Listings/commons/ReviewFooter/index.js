@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const ReviewFooter = () => {
   return (
     <>
       <WhiteCol>
-        <Headline style={{lineHeight: '30px;'}}>
+        <Headline style={{ lineHeight: "30px" }}>
           Reviews
           <span className="float-right">
             <button type="button" className="btn btn-yellow btn-sm">
@@ -22,10 +22,10 @@ const ReviewFooter = () => {
         </TextCenter>
       </WhiteCol>
     </>
-  )
-}
+  );
+};
 
-export default ReviewFooter
+export default ReviewFooter;
 
 const WhiteCol = styled.div`
     background: #fff;
@@ -44,4 +44,4 @@ const WhiteCol = styled.div`
     text-transform: uppercase;
     border-bottom: 1px solid #979797;
     padding-bottom: 10px;
-  `
+  `;

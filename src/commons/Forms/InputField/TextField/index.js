@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-import { MAX_VALUE } from '../../../../constants/fieldConstants'
+import { MAX_VALUE } from "../../../../constants/fieldConstants";
 import {
   InputWrapper,
   InputWithIcon as TextInputWapper,
@@ -9,7 +9,7 @@ import {
   TextInput,
   Error,
   Prepend
-} from '../styled'
+} from "../styled";
 
 const TextField = ({
   input,
@@ -22,17 +22,22 @@ const TextField = ({
   prepend,
   ...rest
 }) => {
+  console.log("meta tag", meta);
   return (
     <InputWrapper css={css}>
-      {label && <Label isActive={meta !== undefined && meta.active} css={labelCss}>
-        {label}
-      </Label>}
+      {label && (
+        <Label isActive={meta !== undefined && meta.active} css={labelCss}>
+          {label}
+        </Label>
+      )}
       <TextInputWapper>
         {prepend && <Prepend>{prepend}</Prepend>}
         <TextInput
           prepend={prepend}
           css={inputCss}
-          maxLength={prepend === '$' ? MAX_VALUE.currencyField : MAX_VALUE.normalFields}
+          maxLength={
+            prepend === "$" ? MAX_VALUE.currencyField : MAX_VALUE.normalFields
+          }
           disabled={disabled}
           isActive={meta !== undefined && meta.active}
           hasError={meta !== undefined && meta.touched && !!meta.error}
@@ -44,27 +49,27 @@ const TextField = ({
         <Error className="field-error">{meta.error}</Error>
       )}
     </InputWrapper>
-  )
-}
+  );
+};
 
 TextField.propTypes = {
-  css     : PropTypes.string,
+  css: PropTypes.string,
   disabled: PropTypes.bool,
-  input   : PropTypes.object,
+  input: PropTypes.object,
   inputCss: PropTypes.string,
-  label   : PropTypes.node,
+  label: PropTypes.node,
   labelCss: PropTypes.string,
-  meta    : PropTypes.shape({
+  meta: PropTypes.shape({
     touched: PropTypes.bool,
-    error  : PropTypes.string,
+    error: PropTypes.string
   }),
   prepend: PropTypes.string
-}
+};
 
 TextField.defaultProps = {
-  css     : '',
-  inputCss: '',
-  labelCss: '',
-}
+  css: "",
+  inputCss: "",
+  labelCss: ""
+};
 
-export default TextField
+export default TextField;
