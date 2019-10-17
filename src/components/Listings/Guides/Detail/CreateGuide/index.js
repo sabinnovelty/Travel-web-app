@@ -1,111 +1,97 @@
 import React, { Component } from "react";
 import "./create-guide-form.css";
+import { reduxForm, Field } from "redux-form";
+import {
+  renderInput,
+  renderTextArea,
+  renderPreferredTrekkingRegion,
+  renderSafteyTraining,
+  renderLanguage,
+  renderExpertiseRegion,
+  renderSpecialization
+} from "../../../../../commons/Input/FormComponent";
 
-export default class CreateGuide extends Component {
+class CreateGuide extends Component {
   render() {
+    const { handleSubmit, pristine, reset, submitting, meta } = this.props;
     return (
-      <div className="create-guide">
+      <div classNameName="create-guide">
         <form>
-          <div className="contact-info">
+          <div classNameName="contact-info">
             <h3> Introduction</h3>
-            <div class="form-group">
-              <label for="emailaddress">Introduction</label>
-              <textarea class="form-control" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="emailaddress">Address</label>
-              <input
-                type="address"
-                class="form-control"
-                placeholder="Address"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputPassword1">
-                Preferred Trekking region
-              </label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>Annapurna Region</option>
-                <option>Langtang Region</option>
-                <option>Manaslu Region</option>
-              </select>
-            </div>
+            <Field
+              name="introduction"
+              component={renderTextArea}
+              label="Introduction"
+              placeholder="Introduction"
+            />
+            <Field
+              name="address"
+              component={renderInput}
+              label="Address"
+              type="text"
+              placeholder="Address"
+            />
+            <Field component={renderPreferredTrekkingRegion} />
           </div>
-          <div className="contact-info">
+
+          <div classNameName="contact-info" style={{ marginTop: 20 }}>
             <h3>Contact Information</h3>
-            <div class="form-group">
-              <label for="emailaddress">Email address</label>
-              <input
-                type="email"
-                class="form-control"
-                placeholder="Enter email"
-              />
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Contact Number</label>
-              <input
+            <Field
+              name="address"
+              component={renderInput}
+              label="Email Address"
+              type="email"
+              placeholder="Email Address"
+            />
+            <Field
+              name="phone_number"
+              component={renderInput}
+              label="Contact Number"
+              type="number"
+              placeholder="Contact Number"
+            />
+            <div className="personal_information">
+              <h3>Personal Information</h3>
+              <Field
+                name="wages"
+                component={renderInput}
+                label="Daily Wages(USD per day)"
                 type="number"
-                class="form-control"
-                placeholder="contact number"
+                placeholder="Daily wages"
+              />
+              <Field
+                name="experience"
+                component={renderInput}
+                label="Experience in year"
+                type="number"
+                placeholder="Experience in year"
+              />
+              <Field
+                name="safteyTraining"
+                component={renderSafteyTraining}
+                label="Saftey Training"
+                placeholder="Saftey Training"
+              />
+              <Field
+                name="language"
+                component={renderLanguage}
+                label="Languages"
+                type="number"
+              />
+              <Field
+                name="preferred_trekking"
+                component={renderPreferredTrekkingRegion}
+                label=""
+              />
+              <Field
+                name="language"
+                component={renderSpecialization}
+                label="specialization"
               />
             </div>
           </div>
-
-          <div className="contact-info">
-            <h3>Personal Information</h3>
-            <div class="form-group">
-              <label for="wages">Daily Wages(USD per day)</label>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="daily wages"
-              />
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Experience in year</label>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="experience"
-              />
-            </div>
-            <div class="form-group">
-              <label for="wages">Saftey training</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>Rock Climbing Training</option>
-                <option>Firstaid Training</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="wages">Languages</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>English</option>
-                <option>Korean</option>
-                <option>Japanese</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="wages">Expertise Region</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>Annapurna Region</option>
-                <option>Langtang Region</option>
-                <option>Manaslu Region</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="wages">Specialization</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>Trekking</option>
-                <option>Peak Climbing</option>
-                <option>camping treks</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary create-guide-button">
+          <button type="submit" className="btn btn-primary create-guide-button">
             Submit
           </button>
         </form>
@@ -113,3 +99,14 @@ export default class CreateGuide extends Component {
     );
   }
 }
+
+const validate = values => {
+  console.log("values", values);
+  let errors = { username: "please enter the value" };
+  return errors;
+};
+
+export default reduxForm({
+  form: "Guide",
+  validate
+})(CreateGuide);
